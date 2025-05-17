@@ -1,8 +1,18 @@
 import axios from 'axios';
 
+// Determine the base URL based on environment
+const getBaseUrl = () => {
+  if (import.meta.env.MODE === 'production') {
+    // In production, use the deployed API URL
+    return '/api';
+  }
+  // In development, use the proxy configured in vite.config.ts
+  return '/api';
+};
+
 // Configure axios instance
 const axiosInstance = axios.create({
-  baseURL: '/api', // Use the proxy configured in vite.config.ts
+  baseURL: getBaseUrl(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

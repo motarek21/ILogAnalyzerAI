@@ -71,7 +71,7 @@ const mockDB = {
     }
     
     // For device queries - return predefined logs
-    if (text.includes('FROM Logs WHERE User_ID')) {
+    if (text.includes('FROM logs WHERE user_id')) {
       const userId = parseInt(params[0]);
       
       // Return the predefined logs for the user
@@ -83,7 +83,7 @@ const mockDB = {
     }
     
     // Handle device statistics queries
-    if (text.includes('SELECT COUNT') && text.includes('FROM Logs')) {
+    if (text.includes('SELECT COUNT') && text.includes('FROM logs')) {
       const userId = parseInt(params[0]);
       
       // Return predefined statistics
@@ -95,7 +95,7 @@ const mockDB = {
     }
     
     // Handle registration
-    if (text.includes('INSERT INTO Users')) {
+    if (text.includes('INSERT INTO users')) {
       return {
         rows: [{
           user_id: 3,
